@@ -1,0 +1,22 @@
+{
+  "name": "AngularSlides",
+  "version": "1.0.0",
+  "homepage": "https://github.com/leftstick/AngularSlides",
+  "description": "A simple sildes show",
+  "keywords": [
+    "Angularjs",
+    "presentation"
+  ],
+  "authors": [
+    "Howard.Zuo"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

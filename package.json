@@ -1,0 +1,23 @@
+{
+  "name": "AngularSlides",
+  "version": "1.0.0",
+  "description": "A simple sildes show",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leftstick/AngularSlides.git"
+  },
+  "keywords": [
+    "Angularjs",
+    "presentation"
+  ],
+  "author": "Howard.Zuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leftstick/AngularSlides/issues"
+  },
+  "homepage": "https://github.com/leftstick/AngularSlides",
+  "dependencies": {
+    "gulp": "^3.8.6",
+    "gulp-connect": "^2.0.6"
+  }
+}
