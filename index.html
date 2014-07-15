@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=1024, user-scalable=no">
-    <title>Your deck.js Presentation</title>
+    <title>AngularJS Basis</title>
+    <link rel="icon" href="resources/img/favicon.ico" type="image/x-icon">
     <!-- Required stylesheet -->
     <link rel="stylesheet" media="screen" href="core/deck.core.css">
     <!-- Extension CSS files go here. Remove or add as needed. -->
@@ -21,32 +22,103 @@
     <link rel="stylesheet" media="print" href="core/print.css">
     <!-- Required Modernizr file -->
     <script src="modernizr.custom.js"></script>
+    <style>
+        .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide{
+            width: 1000px;
+            left: 45%;
+        }
+    </style>
   </head>
   <body>
     <div class="deck-container">
-      <!-- Begin slides. Just make elements with a class of slide. -->
+      
       <section class="slide">
-        <h2>How to Make a Deck</h2>
-        <ol>
+        <h2>AngularJS</h2>
+        <img src="resources/img/AngularJS-large.png" alt="">
+        <h4 style="text-align:right;">HTML enhanced for web apps!</h4>
+        <br/><br/><br/><br/><br/>
+        <h6 style="text-align:right;">Hao.Zuo</h6>
+        <p style="text-align:right;">July 15th, 2014</p>
+      </section>
+
+      <section class="slide">
+          <h2>Confusion</h2>
+          <img src="resources/img/crying.jpg" alt="">
+      </section>
+
+      <section class="slide">
+        <h2>Agenda</h2>
+        <ul>
+          <li>What is <code>$scope</code></li>
+          <li>When should we use <code>$apply()</code></li>
+          <li>How routing works in <code>AngularJS</code></li>
+          <li>How <code>ng-repeat</code> works</li>
+          <li>Lifecycle in <code>AngularJS</code></li>
+          <li>Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code></li>
+        </ul>
+      </section>
+
+      <section class="slide">
+          <h2>What is <code>$scope</code></h2>
+          <br/><br/>
+          <img src="resources/img/scope.png" alt="">
+          <p style="text-align:center;"><code>$scope</code> is the <code>glue</code> between <code>Controller</code> and <code>Template</code></p>
+      </section>
+
+      <section class="slide">
+        <h2>When should we use <code>$apply()</code></h2>
+        <p><code>$apply()</code> is used to execute an expression in angular from outside of the angular framework. (For example from browser DOM events, <code>setTimeout</code>, <code>XHR</code> or third party libraries)</p>
+      </section>
+
+      <section class="slide">
+        <h2>How routing works in <code>AngularJS</code></h2>
+        <ul>
           <li>
-            <h3>Write Slides</h3>
-            <p>Slide content is simple HTML.</p>
+              <h4><code>ng-route</code></h4>
+              <p>organize <code>Controller</code> and <code>Template</code> around URL changes</p>
           </li>
           <li>
-            <h3>Choose Themes</h3>
-            <p>One for slide styles and one for deck transitions.</p>
+              <h4><code>ui-router</code></h4>
+              <p>organize the parts of your interface into a <code>state machine</code></p>
           </li>
-        </ol>
+        </ul>
       </section>
+
       <section class="slide">
-        <h1>Content</h1>
+          <h2>How <code>ng-repeat</code> works</h2>
+          <p>The <code>ngRepeat</code> directive instantiates a template once per item from a collection. </p>
+          <pre><code>
+      &lt;ul&gt;
+        &lt;li ng-repeat="user in users"&gt;
+            {{ user.name }}
+        &lt;/li&gt;
+      &lt;/ul&gt;
+          </code></pre>
       </section>
+
+
       <section class="slide">
-        <h1>Here</h1>
+          <h2>Lifecycle in <code>AngularJS</code></h2>
+          <p>
+              <img style="float: right;margin-left:15px;" src="resources/img/concepts-startup.png" alt="">
+              Angular initializes automatically upon <code>DOMContentLoaded</code> event or when the <code>angular.js</code> script is evaluated if at that time <code>document.readyState</code> is set to <code>'complete'</code>. At this point Angular looks for the <code>ng-app</code> directive which designates your application root. If the <code>ng-app</code> directive is found then Angular will:
+          </p>
+          <ul>
+            <li>load the <code>module</code> associated with the directive.</li>
+            <li>create the application <code>injector</code></li>
+            <li>compile the DOM treating the <code>ng-app</code> directive as the root of the compilation. This allows you to tell it to treat only a portion of the DOM as an Angular application.</li>
+          </ul>
       </section>
-      <!-- End slides. -->
-      <!-- Begin extension snippets. Add or remove as needed. -->
-      <!-- deck.navigation snippet -->
+
+      <section class="slide">
+        <h2>
+          Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code>
+        </h2>
+      </section>
+
+
+
+
       <div aria-role="navigation">
         <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
         <a href="#" class="deck-next-link" title="Next">&#8594;</a>
@@ -78,7 +150,7 @@
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script>
     $(function() {
-    $.deck('.slide');
+        $.deck('.slide');
     });
     </script>
   </body>
