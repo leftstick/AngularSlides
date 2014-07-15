@@ -2,3 +2,7 @@
 
 # Dependency
 node_modules
+
+#dev
+cache
+build
