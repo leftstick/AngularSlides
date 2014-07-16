@@ -1,0 +1,4 @@
+.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide{
+            width: 1000px;
+            left: 40%;
+}

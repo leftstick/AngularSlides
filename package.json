@@ -20,11 +20,12 @@
   "dependencies": {
     "gulp": "^3.8.6",
     "gulp-clean": "^0.3.1",
-    "gulp-connect": "^2.0.6"
+    "gulp-connect": "^2.0.6",
+    "node-webkit-builder": "0.0.3"
   },
   "window": {
     "title": "AngularJS Basis",
-    "icon": "resources/img/favicon.png",
+    "icon": "res/img/favicon.png",
     "toolbar": false,
     "frame": true,
     "width": 800,
