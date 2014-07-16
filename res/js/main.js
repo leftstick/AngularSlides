@@ -26,6 +26,7 @@
             // Show window and remove tray when clicked
             tray.on('click', function() {
                 win.show();
+                win.focus();
                 this.remove();
                 tray = null;
             });
@@ -39,11 +40,18 @@
         // Reference to window and tray
         var win = gui.Window.get();
 
-        window.addEventListener('keyup', function(e) {
-            if (e.keyCode === 122) {
-                win.toggleFullscreen();
+        $(window).on('keyup', function(e) {
+            switch (e.keyCode) {
+                case 122:
+                    win.toggleFullscreen();
+                    break;
+                case 27:
+                    if (win.isFullscreen) {
+                        win.leaveFullscreen();
+                    }
+                    break;
             }
-        }, false);
+        });
 
     };
 

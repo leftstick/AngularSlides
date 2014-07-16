@@ -23,7 +23,6 @@
     <link rel="stylesheet" media="print" href="res/css/main.css">
     <!-- Required Modernizr file -->
     <script type="text/javascript" src="res/js/modernizr.custom.js"></script>
-    <script type="text/javascript" src="res/js/main.js"></script>
   </head>
   <body>
     <div class="deck-container">
@@ -58,11 +57,12 @@
           <h2>What is <code>$scope</code></h2>
           <br/><br/>
           <img src="res/img/scope.png" alt="">
-          <p style="text-align:center;"><code>$scope</code> is the <code>glue</code> between <code>Controller</code> and <code>Template</code></p>
+          <p style="text-align:center;"><code>$scope</code> is the glue between <code>Controller</code> and <code>Template</code></p>
       </section>
 
       <section class="slide">
         <h2>When should we use <code>$apply()</code></h2>
+        <br/>
         <p><code>$apply()</code> is used to execute an expression in angular from outside of the angular framework. (For example from browser DOM events, <code>setTimeout</code>, <code>XHR</code> or third party libraries)</p>
       </section>
 
@@ -110,6 +110,10 @@
         <h2>
           Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code>
         </h2>
+        <ul>
+            <li>AngularJS DI is more like injecting <code>instances</code></li>
+            <li>RequireJS DI is more like injecting <code>classes</code> or <code>constructors</code></li>
+        </ul>
       </section>
 
 
@@ -144,6 +148,8 @@
     <script src="extensions/navigation/deck.navigation.js"></script>
     <script src="extensions/scale/deck.scale.js"></script>
     <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script type="text/javascript" src="res/js/main.js"></script>
+
     <script>
     $(function() {
         $.deck('.slide');
