@@ -1,0 +1,6 @@
+#node-webkit
+build
+cache
+
+#node
+node_modules/
