@@ -1,4 +1,8 @@
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide{
-            width: 1000px;
-            left: 40%;
+    width: 80%;
+    left: 10%;
+    margin-left: 0;
+}
+pre{
+    font-size: 14px !important;
 }
