@@ -44,7 +44,8 @@
           <li>Data-binding is Awesome!</li>
           <li>When should we use <code>$apply()</code></li>
           <li>How routing works in <code>AngularJS</code></li>
-          <li>How <code>ng-repeat</code> works</li>
+          <li>Play with <code>ng-repeat</code></li>
+          <li>Let's have fun with <code>directive</code></li>
           <li>Lifecycle in <code>AngularJS</code></li>
           <li>Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code></li>
         </ul>
@@ -108,7 +109,7 @@
       </section>
 
       <section class="slide">
-          <h2>How <code>ng-repeat</code> works</h2>
+          <h2>Play with <code>ng-repeat</code></h2>
           <p>The <code>ngRepeat</code> directive instantiates a template once per item from a collection. </p>
           <table style="width:100%;">
               <tr>
@@ -138,6 +139,58 @@
     var demo = angular.module('demo', []);
     demo.controller('DemoController', ['$scope', function ($scope) {
         $scope.items = ['nanfeng', 'beifeng', 'dongfeng'];
+    }]);
+}(angular));
+</code></pre>
+                  </td>
+              </tr>
+          </table>
+      </section>
+
+
+      <section class="slide">
+          <h2>Let's have fun with <code>directive</code></h2>
+          <table style="width:100%;">
+              <tr>
+                  <td>
+                    <pre class="line-numbers"><code class="language-markup"><!-- 
+                  -->&lt;!DOCTYPE html&gt;
+&lt;html lang="en" ng-app="demo"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+&lt;/head&gt;
+&lt;body ng-controller="DemoController"&gt;
+    &lt;animate&gt;&lt;/animate&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;script type="text/javascript" src="angular.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="demo.js"&gt;&lt;/script&gt;
+</code></pre>
+                  </td>
+                  <td>
+                    <pre class="line-numbers"><code class="language-javascript"><!-- 
+                  -->(function (angular) {
+    'use strict';
+    var demo = angular.module('demo', []);
+    demo.directive('animate', [function () {
+        return {
+            restrict: 'E',
+            link: function ($scope, element, attrs) {
+                element.css({
+                    width: '100px',
+                    height: '100px',
+                    display: 'block',
+                    backgroundColor: 'red',
+                    transition: 'all 0.5s ease 0'
+                });
+                element.on('mouseenter', function (e) {
+                    element.css('transform', 'translateX(100px)');
+                });
+                element.on('mouseleave', function (e) {
+                    element.css('transform', 'translateX(0)');
+                });
+            }
+        };
     }]);
 }(angular));
 </code></pre>
