@@ -11,7 +11,8 @@
         "jQuery": true,
         "$tooltip": true,
         "module": true,
-        "$": true
+        "$": true,
+        "angular":true
     },
     "globalstrict": true,
     "quotmark": true,
