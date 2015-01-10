@@ -1,11 +1,11 @@
 {
-  "name": "AngularSlides",
+  "name": "angular-tutorial",
   "version": "1.0.0",
   "homepage": "https://github.com/leftstick/AngularSlides",
-  "description": "A simple sildes show",
+  "description": "Tutorial of angular",
   "keywords": [
     "Angularjs",
-    "presentation"
+    "tutorial"
   ],
   "authors": [
     "Howard.Zuo"

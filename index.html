@@ -1,277 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=1024, user-scalable=no">
-    <title>AngularJS Basis</title>
-    <link rel="icon" href="res/img/favicon.ico" type="image/x-icon">
-    <!-- Required stylesheet -->
-    <link rel="stylesheet" media="screen" href="core/deck.core.css">
-    <!-- Extension CSS files go here. Remove or add as needed. -->
-    <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
-    <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
-    <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
-    <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
-    <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
-    <!-- Style theme. More available in /themes/style/ or create your own. -->
-    <link rel="stylesheet" media="screen" href="themes/style/sandstone.nightly.css">
-    <!-- Transition theme. More available in /themes/transition/ or create your own. -->
-    <link rel="stylesheet" media="screen" href="themes/transition/cube.css">
-    <!-- Basic black and white print styles -->
-    <link rel="stylesheet" media="print" href="core/print.css">
-    <!-- Highlight -->
-    <link rel="stylesheet" href="res/css/prism.css">
-    <link rel="stylesheet" href="res/css/main.css">
-    <!-- Required Modernizr file -->
-    <script type="text/javascript" src="res/js/modernizr.custom.js"></script>
-  </head>
-  <body>
-    <div class="deck-container">
-      
-      <section class="slide">
-        <h2>AngularJS</h2>
-        <img src="res/img/AngularJS-large.png" alt="">
-        <h4 style="text-align:right;">HTML enhanced for web apps!</h4>
-        <br/><br/><br/><br/><br/>
-        <h6 style="text-align:right;">Hao.Zuo</h6>
-        <p style="text-align:right;">Jan 8th, 2015</p>
-      </section>
+<html lang="en" ng-app="demo">
+<head>
+  <meta charset="UTF-8">
+  <title>DEMO</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="css/amazeui.min.css"/>
+  <link rel="stylesheet" href="css/demo.css"/>
+</head>
+<body ng-controller="DemoController">
 
-      <section class="slide">
-        <h2>Agenda</h2>
-        <ul>
-          <li>Data-binding is Awesome!</li>
-          <li>When should we use <code>$apply()</code></li>
-          <li>How routing works in <code>AngularJS</code></li>
-          <li>Play with <code>ng-repeat</code></li>
-          <li>Let's have fun with <code>directive</code></li>
-          <li>Lifecycle in <code>AngularJS</code></li>
-          <li>Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code></li>
-        </ul>
-      </section>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <br>
+    <h1>Two way Data-Binding</h1>
+    <hr>
+    <br>
+    <form method="post" class="am-form">
+        <input type="text" placeholder="Typing..." ng-model="searchTxt">
+        <span style="font-weight: bold;">Search Txt: </span><span>{{ searchTxt }}</span>
+    </form>
+    <table class="am-table">
+        <thead>
+            <tr>
+                <th>网站名称</th>
+                <th>网址</th>
+                <th>创建时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data | filter:searchTxt">
+                <td>{{ item.name }}</td>
+                <td>{{ item.url }}</td>
+                <td>{{ item.createDate | date:'yyyy-MM-dd' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+  </div>
+</div>
 
-      <section class="slide">
-          <h2>Data-binding is Awesome!</h2>
-          <p>You don't care about the DOM manipulation any more</p>
-          <table style="width:100%;">
-              <tr>
-                  <td>
-                    <pre class="line-numbers"><code class="language-markup"><!-- 
-                  -->&lt;!DOCTYPE html&gt;
-&lt;html lang="en" ng-app="demo"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-&lt;/head&gt;
-&lt;body ng-controller="DemoController"&gt;
-    &lt;input type="text" ng-model="userName"&gt;
-    &lt;span&gt;{{ userName }}&lt;/span&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;script type="text/javascript" src="angular.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="demo.js"&gt;&lt;/script&gt;
-</code></pre>
-                  </td>
-                  <td>
-                    <pre class="line-numbers"><code class="language-javascript"><!-- 
-                  -->(function (angular) {
-    'use strict';
-    var demo = angular.module('demo', []);
-    demo.controller('DemoController', ['$scope', function ($scope) {
-        $scope.userName = '';
-    }]);
-}(angular));
-</code></pre>
-                  </td>
-              </tr>
-          </table>
-          
-      </section>
-
-      <section class="slide">
-        <h2>When should we use <code>$apply()</code></h2>
-        <br/>
-        <p><code>$apply()</code> is used to execute an expression in angular from outside of the angular framework. (For example from browser DOM events, <code>setTimeout</code>, <code>XHR</code> or third party libraries)</p>
-      </section>
-
-      <section class="slide">
-        <h2>How routing works in <code>AngularJS</code></h2>
-        <ul>
-          <li>
-              <h4><code>ng-route</code></h4>
-              <p>organize <code>Controller</code> and <code>Template</code> around URL changes</p>
-          </li>
-          <li>
-              <h4><code>ui-router</code></h4>
-              <p>organize the parts of your interface into a <code>state machine</code></p>
-          </li>
-        </ul>
-      </section>
-
-      <section class="slide">
-          <h2>Play with <code>ng-repeat</code></h2>
-          <p>The <code>ngRepeat</code> directive instantiates a template once per item from a collection. </p>
-          <table style="width:100%;">
-              <tr>
-                  <td>
-                    <pre class="line-numbers"><code class="language-markup"><!-- 
-                  -->&lt;!DOCTYPE html&gt;
-&lt;html lang="en" ng-app="demo"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-&lt;/head&gt;
-&lt;body ng-controller="DemoController"&gt;
-    &lt;ul&gt;
-        &lt;li ng-repeat="item in items"&gt;
-            {{ item }}
-        &lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;script type="text/javascript" src="angular.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="demo.js"&gt;&lt;/script&gt;
-</code></pre>
-                  </td>
-                  <td>
-                    <pre class="line-numbers"><code class="language-javascript"><!-- 
-                  -->(function (angular) {
-    'use strict';
-    var demo = angular.module('demo', []);
-    demo.controller('DemoController', ['$scope', function ($scope) {
-        $scope.items = ['nanfeng', 'beifeng', 'dongfeng'];
-    }]);
-}(angular));
-</code></pre>
-                  </td>
-              </tr>
-          </table>
-      </section>
-
-
-      <section class="slide">
-          <h2>Let's have fun with <code>directive</code></h2>
-          <table style="width:100%;">
-              <tr>
-                  <td>
-                    <pre class="line-numbers"><code class="language-markup"><!-- 
-                  -->&lt;!DOCTYPE html&gt;
-&lt;html lang="en" ng-app="demo"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-&lt;/head&gt;
-&lt;body ng-controller="DemoController"&gt;
-    &lt;animate&gt;&lt;/animate&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;script type="text/javascript" src="angular.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="demo.js"&gt;&lt;/script&gt;
-</code></pre>
-                  </td>
-                  <td>
-                    <pre class="line-numbers"><code class="language-javascript"><!-- 
-                  -->(function (angular) {
-    'use strict';
-    var demo = angular.module('demo', []);
-    demo.directive('animate', [function () {
-        return {
-            restrict: 'E',
-            link: function ($scope, element, attrs) {
-                element.css({
-                    width: '100px',
-                    height: '100px',
-                    display: 'block',
-                    backgroundColor: 'red',
-                    transition: 'all 0.5s ease 0'
-                });
-                element.on('mouseenter', function (e) {
-                    element.css('transform', 'translateX(100px)');
-                });
-                element.on('mouseleave', function (e) {
-                    element.css('transform', 'translateX(0)');
-                });
-            }
-        };
-    }]);
-}(angular));
-</code></pre>
-                  </td>
-              </tr>
-          </table>
-      </section>
-
-
-      <section class="slide">
-          <h2>Lifecycle in <code>AngularJS</code></h2>
-          <p>
-              <img style="float: right;margin-left:15px;" src="res/img/concepts-startup.png" alt="">
-              Angular initializes automatically upon <code>DOMContentLoaded</code> event or when the <code>angular.js</code> script is evaluated if at that time <code>document.readyState</code> is set to <code>'complete'</code>. At this point Angular looks for the <code>ng-app</code> directive which designates your application root. If the <code>ng-app</code> directive is found then Angular will:
-          </p>
-          <ul>
-            <li>load the <code>module</code> associated with the directive.</li>
-            <li>create the application <code>injector</code></li>
-            <li>compile the DOM treating the <code>ng-app</code> directive as the root of the compilation. This allows you to tell it to treat only a portion of the DOM as an Angular application.</li>
-          </ul>
-      </section>
-
-      <section class="slide">
-        <h2>
-          Differences in DI system between <code>AngularJS</code> and <code>RequireJS</code>
-        </h2>
-        <ul>
-            <li>AngularJS DI is more like injecting <code>instances</code> without any physical namespace, which means all the <code>angular</code> modules have to be injected before the application bootstrapped</li>
-            <li>RequireJS DI is more like injecting <code>classes</code> or <code>constructors</code>, and you may already know how it workds</li>
-        </ul>
-      </section>
-
-      <section class="slide">
-        <h2>
-            END
-        </h2>
-        <h1>Thanks for watching!</h1>
-      </section>
-
-
-
-
-      <div aria-role="navigation">
-        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
-      </div>
-      <!-- deck.status snippet -->
-      <p class="deck-status" aria-role="status">
-      <span class="deck-status-current"></span>
-      /
-      <span class="deck-status-total"></span>
-      </p>
-      <!-- deck.goto snippet -->
-      <form action="." method="get" class="goto-form">
-        <label for="goto-slide">Go to slide:</label>
-        <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-        <datalist id="goto-datalist"></datalist>
-        <input type="submit" value="Go">
-      </form>
-      <!-- End extension snippets. -->
-    </div>
-    <!-- Required JS files. -->
-    <script src="res/js/jquery.min.js"></script>
-    <script src="core/deck.core.js"></script>
-    <!-- Extension JS files. Add or remove as needed. -->
-    <script src="extensions/menu/deck.menu.js"></script>
-    <script src="extensions/goto/deck.goto.js"></script>
-    <script src="extensions/status/deck.status.js"></script>
-    <script src="extensions/navigation/deck.navigation.js"></script>
-    <script src="extensions/scale/deck.scale.js"></script>
-    <!-- Highlight -->
-    <script type="text/javascript" src="res/js/prism.js"></script>
-    <!-- Initialize the deck. You can put this in an external file if desired. -->
-    <script type="text/javascript" src="res/js/main.js"></script>
-
-    <script>
-    $(function() {
-        'use strict';
-
-        $.deck('.slide');
-    });
-    </script>
-  </body>
+</body>
 </html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/amazeui.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
